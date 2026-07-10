@@ -1,0 +1,6 @@
+# dossier systeme et d'environnement
+.DS_Store
+thumbs.db
+
+# configuration d'editeur (vscode)
+.vscode/
