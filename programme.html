@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programme | AfriConnect Summit 2026</title>
+    <!-- CDN Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Unique fichier CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR (Identique à l'accueil) -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="index.html">AfriConnect Summit 2026</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="programme.html" class="active">Programme</a></li>
+                <li><a href="intervenants.html">Intervenants</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Changer de thème">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <button class="hamburger" aria-label="Ouvrir le menu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main>
+        <!-- HERO INTERNE & FIL D'ARIANE -->
+        <section class="internal-hero">
+            <div class="hero-container">
+                <nav class="breadcrumb" aria-label="Fil d'Ariane">
+                    <a href="index.html">Accueil</a> <i class="bi bi-chevron-right"></i> <span>Programme</span>
+                </nav>
+                <h1>Agenda de l'Événement</h1>
+                <p>Explorez les 3 jours de conférences, d'ateliers intensifs et de panels stratégiques.</p>
+            </div>
+        </section>
+
+        <!-- ZONE DES ONGLETS JAVASCRIPT -->
+        <section id="schedule-section">
+            <div class="tabs-container">
+                <button class="tab-btn active" data-day="day1">
+                    <span class="day-title">Jour 01</span>
+                    <span class="day-date">15 Octobre</span>
+                </button>
+                <button class="tab-btn" data-day="day2">
+                    <span class="day-title">Jour 02</span>
+                    <span class="day-date">16 Octobre</span>
+                </button>
+                <button class="tab-btn" data-day="day3">
+                    <span class="day-title">Jour 03</span>
+                    <span class="day-date">17 Octobre</span>
+                </button>
+            </div>
+
+            <!-- CONTENUS DES PLANNINGS (Tableaux HTML) -->
+            <div class="schedule-content">
+                
+                <!-- PLANNING JOUR 1 -->
+                <div id="day1" class="tab-panel active">
+                    <div class="table-responsive">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Heure</th>
+                                    <th>Session</th>
+                                    <th>Intervenant</th>
+                                    <th>Salle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="time">08:30 - 09:30</td>
+                                    <td class="session-title">Accueil & Enregistrement des participants</td>
+                                    <td>—</td>
+                                    <td>Hall Principal</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">09:30 - 11:00</td>
+                                    <td class="session-title">Keynote d'ouverture : L'Afrique, nouveau catalyseur de la tech mondiale</td>
+                                    <td class="speaker-name">Fatou Diop</td>
+                                    <td>Amphi Panafricain</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">11:15 - 12:45</td>
+                                    <td class="session-title">Panel : Souveraineté numérique et infrastructures Cloud sur le continent</td>
+                                    <td class="speaker-name">Samuel Adebayo + Invités</td>
+                                    <td>Salle Kirdi</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">14:00 - 15:30</td>
+                                    <td class="session-title">Workshop : Introduction pratique aux architectures LLM distribuées</td>
+                                    <td class="speaker-name">Équipe Tech-IA</td>
+                                    <td>Lab Cyber</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">15:45 - 17:15</td>
+                                    <td class="session-title">Session interactive : L'état de l'art du Web en Afrique francophone</td>
+                                    <td class="speaker-name">Amara Koné</td>
+                                    <td>Amphi Panafricain</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- PLANNING JOUR 2 -->
+                <div id="day2" class="tab-panel">
+                    <div class="table-responsive">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Heure</th>
+                                    <th>Session</th>
+                                    <th>Intervenant</th>
+                                    <th>Salle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="time">09:00 - 10:30</td>
+                                    <td class="session-title">Fintech & Inclusion financière : Les nouveaux modèles de rupture</td>
+                                    <td class="speaker-name">Amara Koné</td>
+                                    <td>Amphi Panafricain</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">10:45 - 12:15</td>
+                                    <td class="session-title">Masterclass : Concevoir pour l'utilisateur africain connecté</td>
+                                    <td class="speaker-name">Sarah Mensah</td>
+                                    <td>Salle Kirdi</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">13:30 - 15:00</td>
+                                    <td class="session-title">Atelier : Sécuriser ses applications web contre les menaces modernes</td>
+                                    <td class="speaker-name">Experts Cyber</td>
+                                    <td>Lab Cyber</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">15:15 - 16:45</td>
+                                    <td class="session-title">Panel : Big Data et IoT au service de l'agriculture de précision</td>
+                                    <td class="speaker-name">Samuel Adebayo</td>
+                                    <td>Salle Kirdi</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">17:00 - 18:30</td>
+                                    <td class="session-title">Session Networking & Cocktails B2B</td>
+                                    <td>—</td>
+                                    <td>Espace Horizon</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- PLANNING JOUR 3 -->
+                <div id="day3" class="tab-panel">
+                    <div class="table-responsive">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Heure</th>
+                                    <th>Session</th>
+                                    <th>Intervenant</th>
+                                    <th>Salle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="time">09:30 - 11:00</td>
+                                    <td class="session-title">IA responsable : Éthique, biais et opportunités locales</td>
+                                    <td class="speaker-name">Fatou Diop</td>
+                                    <td>Amphi Panafricain</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">11:15 - 12:45</td>
+                                    <td class="session-title">Le futur de la formation tech : Écoles en ligne et universités décentralisées</td>
+                                    <td class="speaker-name">Sarah Mensah</td>
+                                    <td>Salle Kirdi</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">14:00 - 15:30</td>
+                                    <td class="session-title">Startup Pitch Session : Les 10 innovations panafricaines à suivre</td>
+                                    <td class="speaker-name">Membres du Jury</td>
+                                    <td>Amphi Panafricain</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">15:45 - 16:30</td>
+                                    <td class="session-title">Remise des prix et distinctions AfriConnect 2026</td>
+                                    <td>—</td>
+                                    <td>Amphi Panafricain</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">16:30 - 17:30</td>
+                                    <td class="session-title">Keynote de clôture et annonce de la prochaine édition</td>
+                                    <td class="speaker-name">Comité d'Organisation</td>
+                                    <td>Amphi Panafricain</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION THÉMATIQUES (Futur CSS Grid 2x2) -->
+        <section id="themes-section">
+            <h2>Les Grandes Thématiques</h2>
+            <div class="themes-grid">
+                <article class="theme-card">
+                    <div class="theme-icon-box"><i class="bi bi-cpu"></i></div>
+                    <h3>Intelligence Artificielle & Tech</h3>
+                    <p>Modèles de langage, éthique algorithmique, apprentissage profond adapté aux réalités africaines et cas d'usage industriels.</p>
+                </article>
+
+                <article class="theme-card">
+                    <div class="theme-icon-box"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h3>Business & Investissement</h3>
+                    <p>Levées de fonds, stratégies d'expansion continentale, écosystème startup et partenariats public-privé vertueux.</p>
+                </article>
+
+                <article class="theme-card">
+                    <div class="theme-icon-box"><i class="bi bi-palette"></i></div>
+                    <h3>Design & Expérience Utilisateur</h3>
+                    <p>Architecture de l'information, UX de confiance, accessibilité numérique et design système appliqué aux terminaux mobiles.</p>
+                </article>
+
+                <article class="theme-card">
+                    <div class="theme-icon-box"><i class="bi bi-database"></i></div>
+                    <h3>Data Science & Infrastructure</h3>
+                    <p>Gestion de données de masse, souveraineté des serveurs locaux, Internet des Objets (IoT) et architectures Cloud durables.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (Identique à l'accueil) -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>AfriConnect Summit 2026</h3>
+                <p>Le plus grand rassemblement tech panafricain pour connecter les talents, catalyser l'innovation et accélérer la croissance du continent.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Liens Utiles</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="programme.html">Programme</a></li>
+                    <li><a href="intervenants.html">Intervenants</a></li>
+                    <li><a href="contact.html">Inscription & Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Suivez-nous</h3>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Lien vers LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" aria-label="Lien vers X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" aria-label="Lien vers YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" aria-label="Lien vers Facebook"><i class="bi bi-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> AfriConnect Summit. Tous droits réservés.</p>
+            <button id="back-to-top" aria-label="Retour en haut de la page">
+                <i class="bi bi-arrow-up-short"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Fichier JS commun -->
+    <script src="js/main.js"></script>
+</body>
+</html>
