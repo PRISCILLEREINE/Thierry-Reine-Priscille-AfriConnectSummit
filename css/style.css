@@ -1,0 +1,647 @@
+/* ==========================================================================
+   1. VARIABLES & IMPORTATIONS (Google Fonts)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+:root {
+    /* Polices */
+    --font-title: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Palette de couleurs - Mode Clair (Par défaut) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #f1f3f5;
+    --text-primary: #121212;
+    --text-secondary: #495057;
+    --text-muted: #868e96;
+    --accent: #0066cc; /* Bleu électrique moderne */
+    --accent-hover: #0052a3;
+    --border-color: #dee2e6;
+    
+    /* Variables de structure (Constantes) */
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --border-radius-lg: 24px;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Redéfinition des variables pour le MODE SOMBRE */
+[data-theme="dark"] {
+    --bg-primary: #0b0f19;      /* Fond sombre moderne (tirant sur le bleu nuit) */
+    --bg-secondary: #111827;    /* Surface de carte légèrement plus claire */
+    --bg-tertiary: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+    --accent: #3b82f6;          /* Bleu brillant pour mode sombre */
+    --accent-hover: #60a5fa;
+    --border-color: #374151;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   2. RÉINITIALISATION & CONFIGURATION DE BASE
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Liens globaux */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+/* Titres expressifs */
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+/* Boutons Réutilisables de Qualité Supérieure */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--border-radius-sm);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.btn-outline:hover {
+    background-color: var(--accent);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-block {
+    width: 100%;
+}
+/* ==========================================================================
+   3. BARRE DE NAVIGATION (NAVBAR)
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: var(--transition-smooth);
+}
+
+/* Classe dynamique ajoutée en JS au scroll */
+header.scrolled {
+    background-color: rgba(var(--bg-primary-rgb, 255, 255, 255), 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Ajustement pour le mode sombre quand on scrolle */
+[data-theme="dark"] header.scrolled {
+    background-color: rgba(11, 15, 25, 0.85);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+header.scrolled .navbar {
+    padding: 14px 24px;
+}
+
+.nav-logo a {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-family: var(--font-title);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent);
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Boutons de contrôle (Dark mode & Hamburger) */
+#theme-toggle, .hamburger {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+#theme-toggle:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--accent);
+}
+
+.hamburger {
+    display: none; /* Masqué sur PC */
+}
+/* ==========================================================================
+   4. PAGE D'ACCUEIL - SECTION HERO & COMPTE À REBOURS
+   ========================================================================== */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 24px 60px 24px;
+    background: radial-gradient(circle at top right, rgba(0, 102, 204, 0.08), transparent 45%),
+                radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.05), transparent 50%);
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin-bottom: 48px;
+}
+
+#hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* Police ultra-expressive et fluide 2026 */
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-meta {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    font-family: var(--font-title);
+    font-weight: 500;
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Compte à rebours immersif */
+.countdown-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 24px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.countdown-item {
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+
+.countdown-item span {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   5. SECTION CHIFFRES CLÉS (CSS GRID obligatoire)
+   ========================================================================== */
+#key-stats {
+    padding: 100px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#key-stats h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 48px;
+    position: relative;
+}
+
+/* Grid responsive pour les 4 statistiques */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.stat-card {
+    background-color: var(--bg-secondary);
+    padding: 40px 32px;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent);
+}
+
+.stat-number {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   6. SECTION "POURQUOI PARTICIPER" (FLEXBOX obligatoire)
+   ========================================================================== */
+#why-attend {
+    background-color: var(--bg-secondary);
+    padding: 100px 24px;
+}
+
+#why-attend h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 48px;
+}
+
+.features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex; /* Flexbox 1/3 */
+    gap: 32px;
+    justify-content: space-between;
+}
+
+.feature-card {
+    flex: 1; /* Permet de répartir équitablement l'espace */
+    background-color: var(--bg-primary);
+    padding: 40px 32px;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 24px;
+}
+
+.feature-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 16px;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   7. INTERVENANTS VEDETTES & SPONSORS (GRID + FLEX)
+   ========================================================================== */
+#featured-speakers {
+    padding: 100px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#featured-speakers h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 48px;
+}
+
+.speakers-grid {
+    display: grid; /* Grid 2/2 */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    margin-bottom: 48px;
+}
+
+.speaker-card {
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+}
+
+.speaker-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+}
+
+.speaker-img {
+    width: 100%;
+    height: 280px;
+    background-color: var(--bg-tertiary); /* En attendant d'avoir de vraies images */
+    position: relative;
+}
+
+.speaker-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.speaker-info {
+    padding: 24px;
+}
+
+.speaker-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.speaker-role {
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.speaker-country {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: block;
+}
+
+.section-actions {
+    text-align: center;
+}
+
+/* Sponsors */
+#sponsors {
+    background-color: var(--bg-secondary);
+    padding: 100px 24px;
+    text-align: center;
+}
+
+#sponsors h2 {
+    font-size: 2rem;
+    margin-bottom: 48px;
+}
+
+.sponsors-level {
+    margin-bottom: 40px;
+}
+
+.sponsors-level h3 {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+}
+
+.sponsors-logos {
+    display: flex; /* Flexbox 2/3 */
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.sponsor-logo-placeholder {
+    background-color: var(--bg-primary);
+    padding: 20px 40px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 150px;
+}
+
+/* ==========================================================================
+   8. FOOTER DESIGN (FLEXBOX)
+   ========================================================================== */
+footer {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 80px 24px 40px 24px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex; /* Flexbox 3/3 */
+    justify-content: space-between;
+    gap: 48px;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-col h3 {
+    font-size: 1.15rem;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.footer-col p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+    padding-left: 4px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 16px;
+}
+
+.footer-socials a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.footer-socials a:hover {
+    background-color: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.footer-divider {
+    max-width: 1200px;
+    margin: 40px auto 24px auto;
+    border: 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-bottom p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+#back-to-top {
+    background-color: var(--accent);
+    color: #ffffff;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+}
+
+#back-to-top:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-3px);
+}
