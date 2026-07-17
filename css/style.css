@@ -891,3 +891,139 @@ footer {
         transform: translateY(0);
     }
 }
+/* ==========================================================================
+   12. STYLE DE LA PAGE INTERVENANTS (Barre de filtres & Grille)
+   ========================================================================== */
+#filter-section {
+    padding: 60px 24px 20px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Container de filtrage en Flexbox */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap; /* S'adapte proprement sur mobile */
+}
+
+.filter-btn {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 10px 24px;
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-radius: 30px; /* Boutons aux bords arrondis style "pilule" */
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+/* Bouton de filtre actif */
+.filter-btn.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Section de la grande grille de 9 cartes */
+#speakers-section {
+    padding: 40px 24px 100px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.speakers-main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+/* Cartes individuelles des intervenants */
+.speaker-full-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.speaker-full-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+}
+
+/* Container de l'image de l'intervenant */
+.speaker-card-img {
+    width: 100%;
+    height: 320px;
+    background-color: var(--bg-tertiary);
+    overflow: hidden;
+}
+
+.speaker-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+/* Effet de léger zoom sur l'image au survol de la carte */
+.speaker-full-card:hover .speaker-card-img img {
+    transform: scale(1.04);
+}
+
+/* Corps de la carte */
+.speaker-card-body {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.speaker-card-body h3 {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.speaker-spec {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.speaker-org {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+/* Badge du pays d'origine en bas de carte */
+.speaker-flag {
+    margin-top: auto; /* Pousse le badge tout en bas de la carte */
+    display: inline-block;
+    align-self: flex-start;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 6px 12px;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
