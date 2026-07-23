@@ -1250,3 +1250,117 @@ footer {
     border-top: 1px solid var(--border-color);
     padding-top: 20px;
 }
+/* ==========================================================================
+   15. RESPONSIVE DESIGN & MENU MOBILE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* On affiche le bouton hamburger sur mobile */
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px; /* Juste en dessous de la navbar */
+        left: -100%; /* Caché hors de l'écran à gauche par défaut */
+        flex-direction: column;
+        background-color: var(--bg-secondary);
+        width: 100%;
+        height: calc(100vh - 80px);
+        text-align: center;
+        gap: 40px;
+        padding: 40px 0;
+        transition: var(--transition-smooth);
+        box-shadow: var(--shadow-md);
+        border-top: 1px solid var(--border-color);
+    }
+
+    /* ⚡ C'est cette classe que le JS active au clic ! */
+    .nav-links.mobile-active {
+        left: 0; /* Le menu glisse proprement sur l'écran */
+    }
+
+    /* Ajustements pour le layout en colonne sur mobile */
+    .contact-container, 
+    .features-container {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .contact-form-block {
+        padding: 24px;
+    }
+}
+.sponsor-tier {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.sponsor-tier h3 {
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+}
+
+.sponsors-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* ==========================================================================
+   STYLE DES LOGOS SPONSORS
+   ========================================================================== */
+
+/* Conteneur des logos en Flexbox */
+.sponsors-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+/* Taille maximale imposée à TOUS les logos sponsors */
+.sponsor-logo {
+    max-width: 140px;      /* Empêche les logos de dépasser cette largeur */
+    max-height: 60px;      /* Empêche les logos de dépasser cette hauteur */
+    object-fit: contain;  /* Conserve les proportions sans déformer */
+    padding: 10px;
+    background-color: var(--bg-primary, #ffffff);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.sponsor-logo:hover {
+    transform: translateY(-3px);
+}
+
+/* Tailles adaptées par niveau (Optionnel) */
+.sponsors-gold .sponsor-logo {
+    max-width: 160px;
+    max-height: 70px;
+}
+
+.sponsors-silver .sponsor-logo {
+    max-width: 130px;
+    max-height: 55px;
+}
+
+.sponsors-bronze .sponsor-logo {
+    max-width: 110px;
+    max-height: 45px;
+}
+/* Cache tous les panneaux de jours par défaut */
+.tab-panel {
+    display: none !important;
+}
+
+/* Affiche UNIQUEMENT le panneau actif */
+.tab-panel.active {
+    display: block !important;
+}
